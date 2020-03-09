@@ -1,0 +1,69 @@
+{
+  "exp": {
+    "name": "AllenBrain"
+  },
+  "data_loader": {
+    "name": "conv_mnist_data_loader.ConvMnistDataLoader"
+  },
+  "GPU" : {
+    "GPU_COUNT": 1,
+    "IMAGES_PER_GPU": 2
+  },
+  "RPN": {
+    "RPN_ANCHOR_SCALES" : "32,64,128,256,512",
+    "RPN_ANCHOR_RATIOS" : "0.5,1,2",
+    "RPN_ANCHOR_STRIDE" : 1,
+    "RPN_NMS_THRESHOLD" : 0.7,
+    "TRAIN_ROIS_PER_IMAGE" : 32,
+    "RPN_TRAIN_ANCHORS_PER_IMAGE" : 256,
+    "POST_NMS_ROIS_TRAINING" : 2000,
+    "POST_NMS_ROIS_INFERENCE": 1000,
+    "BACKBONE_STRIDES" : "4,8,16,32,64",    
+    "USE_MINI_MASK" : true,
+    "MINI_MASK_SHAPE" : "56,56",
+    "ROI_POSITIVE_RATIO" : 0.33,
+    "POOL_SIZE" : 7,
+    "MASK_POOL_SIZE" : 14,
+    "MASK_SHAPE" : "28,28",
+    "IMAGE_PADDING": true,
+    "MEAN_PIXEL" : "123.7,116.8,103.9", 
+    "MAX_GT_INSTANCES" : 61
+  },
+  
+  "model":{        
+    "NUM_CLASSES": 62,    
+    "name": "SeBRe_model.MaskRCNN",
+    "LEARNING_RATE": 0.001,
+    "LEARNING_MOMENTUM" : 0.9,
+    "WEIGHT_DECAY" : 0.0001,
+    "WEIGHTS_HDF5" : "/n/scratch2/nadhir/PFE/SeBRe_training/data/SeBRe_FINAL_WEIGHTS.h5"
+  },
+  
+  "trainer":{
+    "name": "SeBRe_trainer.SeBReModelTrainer",
+    "IMAGE_MIN_DIM" : 1536,
+    "IMAGE_MAX_DIM" : 6144,
+          
+    "STEPS_PER_EPOCH" : 2000,
+    "VALIDATION_STEPS" : 100, 
+
+    "DETECTION_MAX_INSTANCES" : 61,
+    "USE_RPN_ROIS" : true,
+    
+    "DETECTION_MIN_CONFIDENCE" : 0.9,
+    "DETECTION_NMS_THRESHOLD" : 0.3,    
+
+    "TRAINING_IMAGES_FOLDER" : "/n/scratch2/nadhir/PFE/SeBRe_training/data/Train/Training_JPG",
+    "TRAINING_MASKS_FOLDER" : "/n/scratch2/nadhir/PFE/SeBRe_training/data/Train/Training_Mask"
+  },
+  "validator":{
+    "VALIDATION_IMAGES_FOLDER" : "/n/scratch2/nadhir/PFE/SeBRe_training/data/Val/Val_JPG",
+    "VALIDATION_MASKS_FOLDER" : "/n/scratch2/nadhir/PFE/SeBRe_training/data/Val/Val_Mask"
+  },
+  "data" : {
+    "BRAIN_STRUCTURES": "/n/scratch2/nadhir/PFE/SeBRe_training/data/complet.csv",
+    "RAW_IMAGES" : "/n/scratch2/nadhir/PFE/SeBRe_training/data/Transformed/TransformedJPG",
+    "RAW_MASKS" : "/n/scratch2/nadhir/PFE/SeBRe_training/data/Transformed/TransformedMasks",
+    "RANDOM_SEED": 12345
+  }
+}

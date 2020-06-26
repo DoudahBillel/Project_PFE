@@ -58,7 +58,7 @@ data
 
 You can then generated the data as follow:
 
-```shell
+```r
 python -m pdb main.py -c configs/SeBRe_config.json -s -p 0.8
 ```
 

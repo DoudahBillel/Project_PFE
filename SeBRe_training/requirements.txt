@@ -12,4 +12,4 @@ natsort==7.0.1
 scipy==0.18.1
 comet_ml==3.1.1
 skimage==0.0
-tensorflow==2.1.0
+tensorflow==2.5.3

@@ -7,7 +7,7 @@ Click==7.0
 tqdm==4.43.0
 opencv_python==4.2.0.32
 tensorflow_gpu==1.15.0
-numpy==1.11.2
+numpy==1.21.0
 natsort==7.0.1
 scipy==0.18.1
 comet_ml==3.1.1
